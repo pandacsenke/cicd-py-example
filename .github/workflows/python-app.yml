@@ -32,11 +32,11 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-     - name: Test with pytest
+    - name: Test with pytest
       run: |
         pytest --alluredir=allure-results
         
-      - name: Allure Report action from marketplace
+    - name: Allure Report action from marketplace
       uses: simple-elf/allure-report-action@master
       if: always()
       with:
@@ -44,7 +44,7 @@ jobs:
         allure_history: allure-history
         keep_reports: 20
         
-      - name: Deploy report to Github Pages
+    - name: Deploy report to Github Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v2
       env:
